@@ -1,0 +1,7 @@
+{
+  "name": "tiendaApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
