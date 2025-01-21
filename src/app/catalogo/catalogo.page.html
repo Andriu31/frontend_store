@@ -1,0 +1,64 @@
+<ion-header >
+  <ion-toolbar style="--background: #fff;">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio-tienda"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="comprar">Comprar</ion-title>
+    <ion-buttons slot="end">
+      @if ( idtu == 2) {
+        <ion-button routerLink="/agregar-producto">
+          <ion-icon name="add" slot="end" color="red"></ion-icon>
+        </ion-button>
+      }
+      
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  style="--background: #fff;">
+  <ion-list style="--background: #fff;">
+    
+    <ion-item routerLink="/categoria-mujer" style="--background: #fff;">
+      <ion-label>Mujer</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item routerLink="/categoria-hombre" style="--background: #fff;">
+      <ion-label>Hombre</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item routerLink="/categoria-ninos" style="--background: #fff;">
+      <ion-label>Niños</ion-label>
+      <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-tab-bar slot="bottom" slot="bottom" style="position: fixed; bottom: 0; width: 100%; z-index: 10;" style="--background: #fff;">
+  <ion-tab-button tab="home">
+    <ion-icon name="home" routerLink="/inicio-tienda"></ion-icon>
+    <ion-label>Home</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="comprar">
+    <ion-icon name="add" routerLink="/catalogo"></ion-icon>
+    <ion-label>Comprar</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="mi-lista">
+    <ion-icon name="menu"></ion-icon>
+    <ion-label>Mi lista</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="mi-lista">
+    <ion-icon name="cart-outline" routerLink="/carrito"></ion-icon>
+    <ion-label>Carrito</ion-label>
+  </ion-tab-button>
+
+ 
+
+  <ion-tab-button tab="mi-cuenta">
+    <ion-icon name="person"></ion-icon>
+    <a  routerLink="/person" routerLinkActive="router-link-active" ><ion-label>{{user}}</ion-label></a>
+    
+  </ion-tab-button>
+</ion-tab-bar>

@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+  }
+  
+  .image-container {
+    width: 60%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: auto;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 10px 0;
+    color: black;
+  }
+  
+  p {
+    font-size: 1rem;
+    color: #000000;
+    margin-bottom: 20px;
+  }
+  
+  ion-button {
+    --background: #ffcc00;
+    --background-hover: #ffb900;
+    --border-radius: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 20px;
+  }
+  

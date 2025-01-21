@@ -1,0 +1,41 @@
+<ion-header [translucent]="true" >
+  
+</ion-header>
+
+<ion-content  class="ion-padding" style="--background: #ffe601;">
+  <ion-header class="ion-no-border">
+    <ion-toolbar color="transparent">
+      <ion-buttons slot="start">
+        <ion-button>
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  
+  <div class="container">
+    <h1 class="titulo-llamativo">Ingresa a nuestra tienda virtual de accesorios de ropa</h1>
+
+   
+    <div class="illustration">
+      <img src="assets/icon/img.png" alt="Illustration" class="image" />
+    </div>
+
+
+    <div class="dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <ion-button expand="block" class="sign-up-button" [routerLink]="['/inicio-secion']"  >INICIAR SECION</ion-button>
+    <ion-button  expand="block" class="login-button" routerLink="/register" >CREAR CUENTA</ion-button>
+    <p class="guest-link">Continue as Guest</p>
+  </div>
+
+
+</ion-content>
+
+

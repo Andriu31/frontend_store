@@ -1,0 +1,81 @@
+<ion-header [translucent]="true" style="--background: #f9f9f9;">
+  <ion-toolbar style="--background: #f9f9f9;">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio-tienda"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="carrito">carrito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="--background: #f9f9f9;">
+
+  <!-- Encabezado del carrito -->
+  <div class="cart-header">
+    <ion-label>Total Productos: <span id="total-items">0</span></ion-label>
+    <ion-button color="danger" fill="outline">Vaciar Carrito</ion-button>
+  </div>
+
+  <!-- Lista de productos -->
+  <ion-list>
+    <ion-item class="product-item">
+      <ion-label>
+        <h2>Producto 1</h2>
+        <p>$20.00</p>
+      </ion-label>
+      <ion-button slot="end" color="primary" size="small" fill="outline">-</ion-button>
+      <ion-label slot="end">1</ion-label>
+      <ion-button slot="end" color="primary" size="small">+</ion-button>
+    </ion-item>
+
+    <ion-item class="product-item">
+      <ion-label>
+        <h2>Producto 2</h2>
+        <p>$15.00</p>
+      </ion-label>
+      <ion-button slot="end" color="primary" size="small" fill="outline">-</ion-button>
+      <ion-label slot="end">2</ion-label>
+      <ion-button slot="end" color="primary" size="small">+</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <!-- Total -->
+  <div class="total">
+    Total: $50.00
+  </div>
+
+  <!-- Botón de Checkout -->
+  <ion-button expand="block" color="success">Finalizar Compra</ion-button>
+  
+</ion-content>
+
+
+<ion-tab-bar slot="bottom" slot="bottom" style="position: fixed; bottom: 0; width: 100%; z-index: 10;" style="--background: #fff;">
+ 
+  <ion-tab-button tab="home">
+    <ion-icon name="home" routerLink="/inicio-tienda"></ion-icon>
+    <ion-label>Home</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="comprar">
+    <ion-icon name="add" routerLink="/catalogo"></ion-icon>
+    <ion-label>Comprar</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="mi-lista">
+    <ion-icon name="menu"></ion-icon>
+    <ion-label>Mi lista</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="mi-lista">
+    <ion-icon name="cart-outline" routerLink="/carrito"></ion-icon>
+    <ion-label>Carrito</ion-label>
+  </ion-tab-button>
+
+ 
+
+  <ion-tab-button tab="mi-cuenta">
+    <ion-icon name="person"></ion-icon>
+    <a  routerLink="/person" routerLinkActive="router-link-active" ><ion-label>{{user}}</ion-label></a>
+    
+  </ion-tab-button>
+</ion-tab-bar>

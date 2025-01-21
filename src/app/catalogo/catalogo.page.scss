@@ -1,0 +1,94 @@
+ion-item{
+color: black;
+}
+/* Estilos globales */
+
+  
+  
+  
+  .search-bar {
+    padding: 10px;
+    color: #110f0f;
+  border-radius: 25px;
+  
+  }
+
+  
+  
+  
+  .black-friday-banner h2 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+  
+  /* Tarjetas de productos */
+  .product-card {
+    position: relative;
+    text-align: center;
+    padding: 1px;
+    border: 1px solid #1a1818;
+    border-radius: 8px;
+    background-color: white;
+    height: 300px; /* Altura fija */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  
+  /* Imágenes */
+  
+  
+  /* Etiqueta de descuento */
+  
+  /* Ícono de corazón */
+  .icon-heart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #ccc;
+  }
+  
+ 
+  
+ 
+  
+  .old-price {
+    text-decoration: line-through;
+    color: rgb(10, 10, 10);
+    margin-right: 5px;
+  }
+  
+  
+  
+  
+  /* Novedades */
+  
+  
+  
+  
+  /* Barra de navegación inferior */
+  ion-tab-bar {
+    --background: #ffffff;
+    border-top: 1px solid #f0f0f0;
+  }
+  
+  ion-tab-button {
+    color: #050505;
+  }
+  
+  ion-tab-button.ion-activated {
+    color: rgb(133, 123, 123);
+  }
+  
+  ion-tab-button ion-icon {
+    font-size: 20px;
+  }
+  
+  ion-tab-button ion-label {
+    font-size: 12px;
+  }
+  

@@ -1,0 +1,43 @@
+<ion-header [translucent]="true" style="--background: #fff;">
+  <ion-toolbar style="--background: #fff;">
+    
+    <ion-buttons slot="start" style="--background: #fff;">
+      <ion-back-button defaultHref="/catalogo"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="--background: #fff;">
+  
+</ion-content>
+
+<ion-tab-bar slot="bottom" slot="bottom" style="position: fixed; bottom: 0; width: 100%; z-index: 10;" style="--background: #fff;">
+ 
+  <ion-tab-button tab="home">
+    <ion-icon name="home" routerLink="/inicio-tienda"></ion-icon>
+    <ion-label>Home</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="comprar">
+    <ion-icon name="add" routerLink="/catalogo"></ion-icon>
+    <ion-label>Comprar</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="mi-lista">
+    <ion-icon name="menu"></ion-icon>
+    <ion-label>Mi lista</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="mi-lista">
+    <ion-icon name="cart-outline" routerLink="/carrito"></ion-icon>
+    <ion-label>Carrito</ion-label>
+  </ion-tab-button>
+
+ 
+
+  <ion-tab-button tab="mi-cuenta">
+    <ion-icon name="person"></ion-icon>
+    <a  routerLink="/person" routerLinkActive="router-link-active" ><ion-label>{{user}}</ion-label></a>
+    
+  </ion-tab-button>
+</ion-tab-bar>

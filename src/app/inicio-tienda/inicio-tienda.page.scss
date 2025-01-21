@@ -1,0 +1,152 @@
+/* Estilos globales */
+.logo {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  color: black;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+.search-bar {
+  padding: 10px;
+  color: #110f0f;
+border-radius: 25px;
+
+}
+.buscar {
+ color: #ccc;
+ background-color: black;
+ border-radius: 25px;
+}
+
+.discount-banner {
+  padding: 8px;
+  text-align: center;
+  background-color: rgb(255, 249, 249);
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  border-radius: 45px;
+}
+
+.black-friday-banner h2 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+/* Tarjetas de productos */
+.product-card {
+  position: relative;
+  text-align: center;
+  padding: 1px;
+  border: 1px solid #1a1818;
+  border-radius: 8px;
+  background-color: white;
+  height: 300px; /* Altura fija */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+/* Imágenes */
+.product-card img {
+  width: 100%;
+  height: 180px; /* Altura fija para las imágenes */
+  object-fit: cover; /* Ajusta la imagen sin distorsión */
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Etiqueta de descuento */
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgb(194, 9, 9);
+  color: white;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 5px;
+}
+
+/* Ícono de corazón */
+.icon-heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: #ccc;
+}
+
+.product-title {
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.product-desc {
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.price {
+  font-size: 16px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: rgb(10, 10, 10);
+  margin-right: 5px;
+}
+
+.new-price {
+  color: red;
+  font-weight: bold;
+}
+
+.explore-more ion-button {
+  margin: 20px;
+}
+
+/* Novedades */
+.novelties {
+  text-align: center;
+  margin: -15px;
+}
+
+.novelties h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.novelties p {
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+}
+
+/* Barra de navegación inferior */
+ion-tab-bar {
+  --background: #ffffff;
+  border-top: 1px solid #f0f0f0;
+}
+
+ion-tab-button {
+  color: #050505;
+}
+
+ion-tab-button.ion-activated {
+  color: rgb(133, 123, 123);
+}
+
+ion-tab-button ion-icon {
+  font-size: 20px;
+}
+
+ion-tab-button ion-label {
+  font-size: 12px;
+}

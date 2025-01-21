@@ -1,0 +1,101 @@
+<ion-header  >
+  <ion-toolbar  slot="bottom" slot="bottom" style="position: fixed; bottom: 0; width: 100%; z-index: 10;">
+    <ion-tab-button tab="home"  class="edit-avatar-button"  slot="end">
+      <ion-icon name="add" slot="end" >sdf</ion-icon>
+    </ion-tab-button>
+    
+    <ion-title>Perfil Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" style="--background: #f9f9f9;">
+  
+
+  <!-- Perfil del Usuario -->
+  <div class="profile-container ">
+    <ion-avatar class="profile-avatar">
+      <img src="assets/icon/person.png" alt="Profile">
+    </ion-avatar> 
+    <ion-button fill="outline" color="medium"   > Editar Foto/Avatar</ion-button>
+    <ion-button fill="outline" color="medium" (click)="editperfil()"> <ion-icon name="pencil"></ion-icon></ion-button>
+  </div>
+
+  <!-- Información Personal -->
+  <ion-card class="profile-card" style="--background: #f9f9f9;">
+    <ion-card-header >
+      <ion-card-title class="ion-text-center">Información Personal</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item  style="--background: #f9f9f9;">
+        <ion-label class="etiquetas" position="stacked">Nombre de Usuario</ion-label>
+        <ion-input #usuario [disabled]="editDatos" class="etiquetas" value="{{profile.user.user}}" placeholder="Escribe tu nombre de usuario"></ion-input>
+      </ion-item>
+      
+      <ion-item style="--background: #f9f9f9;">
+        <ion-label  class="etiquetas" position="stacked">Contraseña</ion-label>
+        <ion-input #contraseña [disabled]="editDatos" class="etiquetas" type="password" placeholder="Escribe tu contraseña"></ion-input>
+      </ion-item>
+      
+
+      
+      <ion-item style="--background: #f9f9f9;">
+        <ion-label class="etiquetas" position="stacked">Nombre</ion-label>
+        <ion-input #nombre [(ngModel)]="profile.user.person.name" [disabled]="editDatos" class="etiquetas" value="{{profile.user.person.name}}" placeholder="Escribe tu nombre"></ion-input>
+      </ion-item>
+      
+      <ion-item style="--background: #f9f9f9;">
+        <ion-label class="etiquetas"  position="stacked">Apellido</ion-label>
+        <ion-input #apellido [(ngModel)]="profile.user.person.lastname" [disabled]="editDatos" class="etiquetas" value="{{profile.user.person.lastname}}" placeholder="Escribe tu apellido"></ion-input>
+      </ion-item>
+      
+      <ion-item style="--background: #f9f9f9;">
+        <ion-label class="etiquetas" position="stacked">Cédula de Identidad</ion-label>
+        <ion-input #cedula [(ngModel)]="profile.user.person.ci" [disabled]="editDatos" class="etiquetas" value="{{profile.user.person.ci}}" placeholder="Escribe tu CI"></ion-input>
+      </ion-item>
+      
+      <ion-item style="--background: #f9f9f9;">
+        <ion-label class="etiquetas" position="stacked">Dirección</ion-label>
+        <ion-input #direccion [(ngModel)]="profile.user.person.address" [disabled]="editDatos" class="etiquetas" value="{{profile.user.person.address}}" placeholder="Escribe tu dirección"></ion-input>
+      </ion-item>
+      
+      <ion-item style="--background: #f9f9f9;">
+        <ion-label class="etiquetas" position="stacked">Teléfono</ion-label>
+        <ion-input #numeroTele [(ngModel)]="profile.user.person.phone" [disabled]="editDatos" class="etiquetas"  value="{{profile.user.person.phone}}" placeholder="Escribe tu número de teléfono"></ion-input>
+      </ion-item>
+      
+      <ion-item style="--background: #f9f9f9;">
+        <ion-label class="etiquetas" position="stacked">Foto</ion-label>
+        <ion-input [disabled]="editDatos" class="etiquetas" placeholder="URL de tu foto"></ion-input>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Opciones Adicionales -->
+  <ion-card class="options-card" style="--background: #f9f9f9;">
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Opciones Adicionales</ion-card-title>
+    </ion-card-header>
+    <ion-card-content style="--background: #f9f9f9;" class=" inci">
+      <ion-item style="--background: #f9f9f9;" lines="none">
+        <ion-label class="etiquetas" *ngIf="!editDatos" (click)="updatePerson ()">Cambiar Datos del Usuario</ion-label>
+      </ion-item>
+      <ion-item style="--background: #f9f9f9;" lines="none">
+        <ion-label class="etiquetas">Cambiar Password</ion-label>
+      </ion-item>
+      <ion-button color="danger" fill="outline" (click)="cerrarSesion()">Cerrar Sesion </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-tab-bar slot="bottom" slot="bottom" style="position: fixed; bottom: 0; width: 100%; z-index: 10;">
+  <ion-tab-button tab="home">
+    <ion-icon name="home"></ion-icon>
+    <ion-label routerLink="/inicio-tienda" routerLinkActive="router-link-active"  >Home</ion-label>
+  </ion-tab-button>
+
+
+
+</ion-tab-bar>
+
+
+  

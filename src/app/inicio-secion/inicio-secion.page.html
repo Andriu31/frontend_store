@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  
+</ion-header>
+
+
+<ion-content class="login-container" >
+  <div class="overlay">
+    <div class="login-card">
+      <div class="icon-container">
+        <div class="circle-icon">
+          <ion-icon name="person-outline"></ion-icon>
+        </div>
+      </div>
+      <div class="input-container">
+        <ion-item lines="none" class="input-item">
+          <ion-icon name="person" slot="start" class="input-icon"></ion-icon>
+          <ion-input placeholder="Email" #email type="email"></ion-input>
+        </ion-item>
+        
+        <ion-item lines="none" class="input-item">
+          <ion-icon name="lock-closed" slot="start" class="input-icon"></ion-icon>
+          <ion-input type="password" #password placeholder="password"  value="">
+            <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+          </ion-input>
+        </ion-item>
+      </div>
+      <div class="options">
+        <ion-item lines="none" class="remember-me">
+          <ion-checkbox slot="start"></ion-checkbox>
+          <ion-label>Remember me</ion-label>
+        </ion-item>
+        
+      </div>
+      <ion-button expand="block" class="login-button"  (click)="login(email, password)">Iniciar Sesion</ion-button>
+      <ion-button expand="block" class="login-button" routerLink="/welcome">Regresar</ion-button>
+    </div>
+    
+    
+  </div>
+</ion-content>
+
+
+
+
+
+
+
+
