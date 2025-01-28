@@ -3,7 +3,7 @@
     <ion-tab-button tab="home"  class="edit-avatar-button"  slot="end">
       <ion-icon name="add" slot="end" >sdf</ion-icon>
     </ion-tab-button>
-    
+  
     <ion-title>Perfil Usuario</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -14,9 +14,9 @@
   <!-- Perfil del Usuario -->
   <div class="profile-container ">
     <ion-avatar class="profile-avatar">
-      <img src="assets/icon/person.png" alt="Profile">
+      <img src="http://127.0.0.1:3000/imagenes/personas/{{profile.user.person.photo}}" >
     </ion-avatar> 
-    <ion-button fill="outline" color="medium"   > Editar Foto/Avatar</ion-button>
+    <ion-input type="file" (change)="changeImage($event)" ></ion-input>
     <ion-button fill="outline" color="medium" (click)="editperfil()"> <ion-icon name="pencil"></ion-icon></ion-button>
   </div>
 
@@ -63,10 +63,7 @@
         <ion-input #numeroTele [(ngModel)]="profile.user.person.phone" [disabled]="editDatos" class="etiquetas"  value="{{profile.user.person.phone}}" placeholder="Escribe tu número de teléfono"></ion-input>
       </ion-item>
       
-      <ion-item style="--background: #f9f9f9;">
-        <ion-label class="etiquetas" position="stacked">Foto</ion-label>
-        <ion-input [disabled]="editDatos" class="etiquetas" placeholder="URL de tu foto"></ion-input>
-      </ion-item>
+      
     </ion-card-content>
   </ion-card>
 
@@ -77,10 +74,10 @@
     </ion-card-header>
     <ion-card-content style="--background: #f9f9f9;" class=" inci">
       <ion-item style="--background: #f9f9f9;" lines="none">
-        <ion-label class="etiquetas" *ngIf="!editDatos" (click)="updatePerson ()">Cambiar Datos del Usuario</ion-label>
+        <ion-label class="etiquetas" (click)="updatePerson ()">Cambiar Datos del Usuario</ion-label>
       </ion-item>
       <ion-item style="--background: #f9f9f9;" lines="none">
-        <ion-label class="etiquetas">Cambiar Password</ion-label>
+        <ion-label class="etiquetas"  >Cambiar Password</ion-label>
       </ion-item>
       <ion-button color="danger" fill="outline" (click)="cerrarSesion()">Cerrar Sesion </ion-button>
     </ion-card-content>

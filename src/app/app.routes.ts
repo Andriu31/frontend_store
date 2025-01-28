@@ -8,9 +8,9 @@ export const routes: Routes = [
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
   },
   {
-    path: '',
-    redirectTo: 'welcome',
-    pathMatch: 'full',
+      path: '',
+      redirectTo: 'welcome',
+      pathMatch: 'full',
   },
   {
     path: 'welcome',

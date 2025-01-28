@@ -21,6 +21,17 @@ export class PersonService {
     .set('Authorization', `Bearer ${localStorage.getItem('token')}`);
     return this.http.put<any>('http://127.0.0.1:3000/api/person/'+id, data, { headers: header });
   }
+
+ updateImage(id:any, image:any){
+const data = new FormData();
+data.append('file', image);
+console.log('ID:', id);
+  console.log('Image:', image);
+
+return this.http.put<any>('http://127.0.0.1:3000/api/update/image/'+id, data);
+ }
+
+
 }
 
 

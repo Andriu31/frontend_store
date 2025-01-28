@@ -9,6 +9,43 @@
 
 <ion-content style="--background: #fff;">
   
+  <ion-item lines="none" class="input-item">
+    <ion-icon name="pricetag" slot="start" class="input-icon"></ion-icon>
+    <ion-input placeholder="Nombre del Producto" #name type="text"></ion-input>
+  </ion-item>
+   <!-- Descripción -->
+   <ion-item lines="none" class="input-item">
+    <ion-icon name="clipboard" slot="start" class="input-icon"></ion-icon>
+    <ion-input placeholder="Descripción" #description type="text"></ion-input>
+  </ion-item>
+
+  <!-- Precio -->
+  <ion-item lines="none" class="input-item">
+    <ion-icon name="cash" slot="start" class="input-icon"></ion-icon>
+    <ion-input placeholder="Precio" #precio type="number"></ion-input>
+  </ion-item>
+
+  <!-- Categoría -->
+  <ion-item lines="none" class="input-item">
+    <ion-icon name="list" slot="start" class="input-icon"></ion-icon>
+    <ion-input placeholder="Categoría" #categoria type="text"></ion-input>
+  </ion-item>
+
+  <!-- Stock -->
+  <ion-item lines="none" class="input-item">
+    <ion-icon name="cube" slot="start" class="input-icon"></ion-icon>
+    <ion-input placeholder="Stock" #stock type="number"></ion-input>
+  </ion-item>
+
+  <ion-item lines="none" class="input-item">
+    <ion-icon name="image" slot="start" class="input-icon"></ion-icon>
+    <input type="file" #imageInput />
+  </ion-item>
+
+  <ion-button expand="block" class="register-button" (click)="registerProduct(name, description, precio, categoria, stock, imageInput)">
+    REGISTRAR PRODUCTO
+  </ion-button>
+  
 </ion-content>
 
 <ion-tab-bar slot="bottom" slot="bottom" style="position: fixed; bottom: 0; width: 100%; z-index: 10;" style="--background: #fff;">

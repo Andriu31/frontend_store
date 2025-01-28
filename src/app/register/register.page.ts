@@ -1,3 +1,5 @@
+import { PersonService } from './../services/person.service';
+
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -5,7 +7,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonIcon, IonItem, IonInput
 import { Router, RouterLink } from '@angular/router';
 import { UsersService } from '../services/users.service';
 import{ LoadingController, AlertController} from '@ionic/angular';
-import { PersonService } from '../services/person.service';
+
 
 @Component({
   selector: 'app-register',
@@ -53,4 +55,6 @@ export class RegisterPage implements OnInit {
       },
     });
   }
+
+ 
 }

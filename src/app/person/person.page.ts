@@ -11,7 +11,7 @@ import{ chevronDownCircle,
   colorPalette,
   document,
   globe,}from 'ionicons/icons';
-import { Router, RouterLink } from '@angular/router';
+import { Data, Router, RouterLink } from '@angular/router';
 import { PersonService } from '../services/person.service';
 import{ LoadingController, AlertController} from '@ionic/angular';
 
@@ -28,6 +28,7 @@ export class PersonPage implements OnInit {
   profile:any;
   personid:any;
   editDatos:boolean=true;
+  perdson:any;
 
   constructor( private usersService:UsersService, private personService:PersonService, 
     private loadingController:LoadingController, 
@@ -36,6 +37,7 @@ export class PersonPage implements OnInit {
     addIcons({ cog, search ,person, mail,create,trash,add,home,close,exit,menu, pencil});
     addIcons({ chevronDownCircle, chevronForwardCircle, chevronUpCircle, colorPalette, document, globe });
     this.personid = localStorage.getItem('id');
+    this.perdson =localStorage.getItem('idp')
 
   }
 
@@ -43,17 +45,28 @@ export class PersonPage implements OnInit {
   ngOnInit() {
     this.user=localStorage.getItem('username');
     this.viewProfile();
+    this.verimagen();
   }
 
   editperfil(){
     this.editDatos=false;
   }
 
+  verimagen(){
+    this.usersService.getOneUser(this.perdson).subscribe({
+      next: (data) => {
+        this.profile=data;
+      },
+      error:(error:any)=>{
+
+      }
+    })
+  }
+
   viewProfile(){
     this.usersService.getOneUser(this.personid).subscribe({
       next:(data:any)=>{
         this.profile=data;
-        
         
       },
       error:(error:any)=>{
@@ -67,7 +80,7 @@ export class PersonPage implements OnInit {
     const personData = this.profile.user.person; 
     this.personService.updatePerson(idp,  personData.name, personData.lastname, personData.ci, personData.address, personData.phone).subscribe({
       next:(data:any)=>{  
-  
+
         this.viewProfile();
         this.editDatos = true;
         
@@ -79,9 +92,29 @@ export class PersonPage implements OnInit {
     })
 }
 
+
+
+
+
 cerrarSesion(){
   localStorage.clear()
   this.router.navigateByUrl('/welcome')
+}
+
+
+changeImage(event: any){
+  const file = event.target.files[0];
+  this.personService.updateImage(this.perdson, file).subscribe({
+    next:(data:any)=>{
+      
+     
+      this.viewProfile();
+    },
+    error:(error:any)=>{
+      
+
+    }
+  })
 }
 
 }
