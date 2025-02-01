@@ -12,7 +12,8 @@ export class ProductoService {
   constructor(private http:HttpClient) { }
 
   // Agregar producto
-  RegistroProducto(name:any, description:any, precio:any, categoria:any, stock:any){
+  RegistroProducto(name:any, description:any, precio:any, categoria:any, stock:any):
+  Observable<any>{
 
     const data ={
       "name":name,
@@ -25,8 +26,14 @@ export class ProductoService {
   }
 // Servicio para subir imagen después de registrar el producto
  SubirImagenProducto(id: any, image: any) {
-  const formData = new FormData();
-  formData.append('file', image, image.name);
-  return this.http.post(`http://127.0.0.1:3000/api/products/${id}/image`, formData);
+  const data = new FormData();
+  data.append('file', image);
+  return this.http.post(`http://127.0.0.1:3000/api/products/${id}/image`, data);
 }
+
+obtenerProductos(): Observable<any> {
+  return this.http.get('http://127.0.0.1:3000/api/verproduct');
+}
+
+
 }

@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons, IonTabBar, IonTabButton, IonIcon, IonLabel, IonItem, IonButton, IonInput } from '@ionic/angular/standalone';
 import { Router, RouterLink } from '@angular/router';
 import { addIcons } from 'ionicons';
-import { add, chevronForwardOutline, home, menu, cartOutline, person, cubeOutline, pricetag, clipboard, cash, list, image } from 'ionicons/icons';
+import { add, chevronForwardOutline, home, cube,menu, cartOutline, person, cubeOutline, pricetag, clipboard, cash, list, image } from 'ionicons/icons';
 import { IonFab, IonFabButton } from '@ionic/angular/standalone';
 import { ProductoService } from '../services/producto.service';
 import{ LoadingController, AlertController} from '@ionic/angular';
@@ -22,7 +22,10 @@ export class AgregarProductoPage implements OnInit {
   constructor(private productServise: ProductoService, private router: Router,
     private loadingController: LoadingController,
     private alertController: AlertController
-  ) {addIcons({pricetag,clipboard,cash,list,image,home,add,menu,cartOutline,person,cubeOutline,chevronForwardOutline});  }
+  ) {addIcons({pricetag,clipboard,cash,list,image,cube,home,add,menu,cartOutline,person,cubeOutline,chevronForwardOutline});  }
+
+  
+
 
   ngOnInit() {
     this.user = localStorage.getItem('username') || 'Invitado';
@@ -40,14 +43,14 @@ export class AgregarProductoPage implements OnInit {
     // Paso 1: Registrar producto sin imagen
     this.productServise.RegistroProducto(name.value, description.value, precio.value, categoria.value, stock.value).subscribe({
       next: async (data: any) => {
-        const productId = data.id; // Asegúrate de que el backend retorne el ID del producto recién creado
+        const productId = data.producto.id; // Asegúrate de que el backend retorne el ID del producto recién creado
         console.log('Producto registrado:', productId);
   
         // Si hay una imagen seleccionada, subirla
         if (image) {
           this.productServise.SubirImagenProducto(productId, image).subscribe({
             next: async () => {
-              debugger
+             
               await loading.dismiss();
               const alert = await this.alertController.create({
                 header: 'Registro exitoso',
@@ -55,10 +58,10 @@ export class AgregarProductoPage implements OnInit {
                 buttons: ['OK'],
               });
               await alert.present();
-              this.router.navigateByUrl('/lista-productos'); // Redirige a la lista de productos tras el registro
+             // Redirige a la lista de productos tras el registro
             },
             error: async (error: any) => {
-              debugger
+              
               await loading.dismiss();
               console.error('Error al subir la imagen:', error);
   
@@ -83,7 +86,7 @@ export class AgregarProductoPage implements OnInit {
         }
       },
       error: async (error: any) => {
-        debugger
+       
         await loading.dismiss();
         console.error('Error al registrar el producto:', error);
   

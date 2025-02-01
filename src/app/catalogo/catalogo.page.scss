@@ -92,3 +92,21 @@ color: black;
     font-size: 12px;
   }
   
+  ion-thumbnail {
+    --size: 100px; // Tamaño de la imagen
+    --border-radius: 10px; // Bordes redondeados
+  }
+  
+  ion-item {
+    margin-bottom: 10px; // Espacio entre productos
+  }
+  
+  ion-label {
+    h2 {
+      font-weight: bold; // Título en negrita
+    }
+  
+    p {
+      margin: 5px 0; // Espacio entre párrafos
+    }
+  }

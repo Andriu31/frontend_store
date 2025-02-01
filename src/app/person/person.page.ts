@@ -45,7 +45,7 @@ export class PersonPage implements OnInit {
   ngOnInit() {
     this.user=localStorage.getItem('username');
     this.viewProfile();
-    this.verimagen();
+   
   }
 
   editperfil(){
