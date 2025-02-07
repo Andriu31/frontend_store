@@ -62,4 +62,8 @@ export const routes: Routes = [
     loadComponent: () => import('./agregar-producto/agregar-producto.page').then( m => m.AgregarProductoPage),
     canActivate: [PermissionGuard]
   },
+  {
+    path: 'editar-producto/:id',
+    loadComponent: () => import('./editar-producto/editar-producto.page').then( m => m.EditarProductoPage)
+  },
 ];

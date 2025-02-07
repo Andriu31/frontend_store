@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>EditarProducto</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/catalogo"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <form >
+      <ion-item>
+        <ion-label  position="floating"></ion-label>
+        <ion-input [(ngModel)]="producto.name" name="name" #name   required placeholder="Nombre del Producto"  ></ion-input>  
+      </ion-item>
+      
+
+      
+      
+      <ion-item>
+        <ion-label position="floating"></ion-label>
+        <ion-input [(ngModel)]="producto.description" name="description" #description required placeholder="Descripción"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating"></ion-label>
+        <ion-input [(ngModel)]="producto.precio" name="precio" type="number"   #precio required placeholder="Precio"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating"></ion-label>
+        <ion-input [(ngModel)]="producto.categoria" name="categoria" value="traeP.categoria"  required #categoria placeholder="Categoría"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating"></ion-label>
+        <ion-input [(ngModel)]="producto.stock" name="stock" type="number" value="traeP.stock"  required #stock placeholder="Stock"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label>Imagen</ion-label>
+        <input type="file" (change)="onImageSelected($event)">
+      </ion-item>
+  
+      <ion-button expand="full" type="submit" (click)="actualizarProducto(name,description,precio,categoria,stock)">Guardar Cambios</ion-button>
+      <ion-button expand="full" color="danger" (click)="eliminarProducto()">Eliminar Producto</ion-button>
+    </form>
+
+</ion-content>

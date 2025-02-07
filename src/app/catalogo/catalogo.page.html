@@ -17,23 +17,27 @@
 
 <ion-content  style="--background: #fff;">
   
-  <ion-list style="--background: #fff;">
-    <ion-item *ngFor="let producto of productos">
-      <!-- Imagen del producto -->
-      <ion-thumbnail slot="start">
-        <img src="http://127.0.0.1:3000/imagenes/productos/{{producto.imagen}}"onerror="console.error('Error al cargar la imagen:', this.src)" />
-      </ion-thumbnail>
+  <ion-grid>
+    
+      <ion-col size="6" *ngFor="let producto of productos">
+        <div class="product-card">
+          <ion-thumbnail>
+            <img [src]="'http://127.0.0.1:3000/imagenes/productos/' + producto.imagen"  onerror="console.error('Error al cargar la imagen:', this.src)" />
+          </ion-thumbnail>
+          <a class="product-name"><strong class="product-name">Nombre:</strong> {{ producto.name }}</a>
+          <a class="product-name"><strong class="product-name">Descripción:</strong> {{ producto.description }}</a>
+          <a class="product-name"><strong class="product-name">Precio:</strong> ${{ producto.precio }}</a>
+          <a class="product-name"><strong class="product-name">Categoría:</strong> {{ producto.categoria }}</a>
+          <a class="product-name"><strong class="product-name">Stock:</strong> {{ producto.stock }}</a>
+          
+         <ion-button (click)="agregarAlCarrito(producto.id)"  color=""> <ion-icon name="cart-outline" routerLink="/carrito"></ion-icon></ion-button>
+           
+         <ion-button routerLink="/editar-producto/{{ producto.id }}" color="primary"><ion-icon name="pencil" routerLink="/carrito"></ion-icon></ion-button>
 
-      <!-- Información del producto -->
-      <ion-label>
-        <p><strong>Nombre:</strong>{{ producto.name }}</p>
-        <p><strong>Descripcion:</strong>{{ producto.description }}</p>
-        <p><strong>Precio:</strong> ${{ producto.precio }}</p>
-        <p><strong>Categoría:</strong> {{ producto.categoria }}</p>
-        <p><strong>Stock:</strong> {{ producto.stock }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+        </div>
+      </ion-col>
+    
+  </ion-grid>
 </ion-content>
 
 <ion-tab-bar slot="bottom" slot="bottom" style="position: fixed; bottom: 0; width: 100%; z-index: 10;" style="--background: #fff;">

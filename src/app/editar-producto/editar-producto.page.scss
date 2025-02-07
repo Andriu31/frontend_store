@@ -1,0 +1,26 @@
+ion-label{
+    color: rgb(12, 12, 12);
+}
+
+ion-card {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+  }
+  
+  ion-item {
+    --background: #e73434;
+    --border-radius: 10px;
+    margin-bottom: 10px;
+  }
+  
+  ion-button {
+    font-weight: bold;
+    border-radius: 8px;
+  }
+  
+  ion-thumbnail img {
+    border-radius: 10px;
+    width: 80px;
+    height: 80px;
+  }
+  

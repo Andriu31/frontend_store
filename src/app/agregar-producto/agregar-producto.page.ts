@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonBackButton, IonButtons, IonTabBar, IonTabButton, IonIcon, IonLabel, IonItem, IonButton, IonInput } from '@ionic/angular/standalone';
 import { Router, RouterLink } from '@angular/router';
 import { addIcons } from 'ionicons';
-import { add, chevronForwardOutline, home, cube,menu, cartOutline, person, cubeOutline, pricetag, clipboard, cash, list, image } from 'ionicons/icons';
+import { add, chevronForwardOutline, home, cube,menu, cartOutline, person, cubeOutline, pricetag, clipboard, cash, list, image, trash } from 'ionicons/icons';
 import { IonFab, IonFabButton } from '@ionic/angular/standalone';
 import { ProductoService } from '../services/producto.service';
 import{ LoadingController, AlertController} from '@ionic/angular';
@@ -22,13 +22,14 @@ export class AgregarProductoPage implements OnInit {
   constructor(private productServise: ProductoService, private router: Router,
     private loadingController: LoadingController,
     private alertController: AlertController
-  ) {addIcons({pricetag,clipboard,cash,list,image,cube,home,add,menu,cartOutline,person,cubeOutline,chevronForwardOutline});  }
+  ) {addIcons({pricetag,clipboard,cash,list,cube,image,trash,home,add,menu,cartOutline,person,cubeOutline,chevronForwardOutline});  }
 
   
 
 
   ngOnInit() {
     this.user = localStorage.getItem('username') || 'Invitado';
+    
   }
 
   async registerProduct(name: any, description: any, precio: any, categoria: any, stock: any, imageInput: any) {
@@ -58,7 +59,7 @@ export class AgregarProductoPage implements OnInit {
                 buttons: ['OK'],
               });
               await alert.present();
-             // Redirige a la lista de productos tras el registro
+              this.router.navigateByUrl('/catalogo');// Redirige a la lista de productos tras el registro
             },
             error: async (error: any) => {
               
@@ -99,5 +100,96 @@ export class AgregarProductoPage implements OnInit {
       },
     });
   }
+
+
+
+
+
+
+
+
+  async updateProduct(id: any, name: any, description: any, precio: any, categoria: any, stock: any, imageInput: any) {
+    const loading = await this.loadingController.create({
+      message: 'Actualizando producto...',
+      spinner: 'circles',
+    });
+    await loading.present();
+  
+    const image = imageInput.files[0]; // Obtener imagen
+  
+    this.productServise.actualizarProducto(id, name.value, description.value, precio.value, categoria.value, stock.value, image)
+      .subscribe({
+        next: async () => {
+          await loading.dismiss();
+          const alert = await this.alertController.create({
+            header: 'Actualización exitosa',
+            message: 'Producto actualizado correctamente.',
+            buttons: ['OK'],
+          });
+          await alert.present();
+          this.router.navigateByUrl('/catalogo');
+        },
+        error: async (error: any) => {
+          await loading.dismiss();
+          console.error('Error al actualizar el producto:', error);
+          const alert = await this.alertController.create({
+            header: 'Error',
+            message: 'Ocurrió un error al actualizar el producto.',
+            buttons: ['OK'],
+          });
+          await alert.present();
+        },
+      });
+  }
+
+  
+
+  async deleteProduct(id: any) {
+    const alert = await this.alertController.create({
+      header: 'Confirmar eliminación',
+      message: '¿Estás seguro de que deseas eliminar este producto?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Eliminar',
+          handler: async () => {
+            const loading = await this.loadingController.create({
+              message: 'Eliminando producto...',
+              spinner: 'circles',
+            });
+            await loading.present();
+  
+            this.productServise.eliminarProducto(id).subscribe({
+              next: async () => {
+                await loading.dismiss();
+                const alert = await this.alertController.create({
+                  header: 'Eliminado',
+                  message: 'Producto eliminado correctamente.',
+                  buttons: ['OK'],
+                });
+                await alert.present();
+                this.router.navigateByUrl('/catalogo');
+              },
+              error: async (error: any) => {
+                await loading.dismiss();
+                console.error('Error al eliminar el producto:', error);
+                const alert = await this.alertController.create({
+                  header: 'Error',
+                  message: 'No se pudo eliminar el producto.',
+                  buttons: ['OK'],
+                });
+                await alert.present();
+              },
+            });
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
+  
 
 }

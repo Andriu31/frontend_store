@@ -1,27 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonTabs, IonFooter, IonIcon, IonTabButton, IonTabBar, IonLabel, IonInput, IonButton, IonButtons, IonCol, IonGrid, IonRow, IonSearchbar, IonNav, IonModal, IonCard, IonCardContent } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonTabs, IonFooter, IonIcon, IonTabButton, IonTabBar, IonLabel, IonInput, IonButton, IonButtons, IonCol, IonGrid, IonRow, IonSearchbar, IonNav, IonModal, IonCard, IonCardContent, IonItemOptions, IonItemSliding, IonItem, IonAvatar, IonItemOption, IonList, IonCardHeader } from '@ionic/angular/standalone';
 import { RouterLink } from '@angular/router';
 import { addIcons } from 'ionicons';
-import { search, home, person, heartOutline, add, menu, cartOutline } from 'ionicons/icons';
+import { search, home, person, heartOutline, add, menu, cartOutline, pin, share, trash } from 'ionicons/icons';
 
 import { BotonComponent } from '../componentes/boton/boton.component';
+import { ProductoService } from '../services/producto.service';
 @Component({
   selector: 'app-inicio-tienda',
   templateUrl: './inicio-tienda.page.html',
   styleUrls: ['./inicio-tienda.page.scss'],
   standalone: true,
-  imports: [BotonComponent,IonCardContent, IonCard, IonModal, IonNav, IonSearchbar, IonRow, IonGrid, IonCol, IonButtons, IonButton, IonInput, IonLabel, IonTabBar, IonTabButton, IonIcon, IonFooter, IonTabs, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterLink]
+  imports: [IonCardHeader, IonList, IonItemOption, IonAvatar, IonItem, IonItemSliding, IonItemOptions, BotonComponent,IonCardContent, IonCard, IonModal, IonNav, IonSearchbar, IonRow, IonGrid, IonCol, IonButtons, IonButton, IonInput, IonLabel, IonTabBar, IonTabButton, IonIcon, IonFooter, IonTabs, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, RouterLink]
 })
 export class InicioTiendaPage implements OnInit {
 
   user: any;
   productos: any[] = []; // Lista de productos
   productosFiltrados: any[] = []; // Lista filtrada
+  
+  product:any;
 
-  constructor() {
-    addIcons({cartOutline,heartOutline,home,add,menu,person,search});
+  constructor( private productoservise: ProductoService) {
+    addIcons({pin,share,trash,heartOutline,home,add,menu,cartOutline,person,search});
   }
 
   ngOnInit() {
@@ -50,4 +53,21 @@ export class InicioTiendaPage implements OnInit {
       this.productosFiltrados = [...this.productos]; // Mostrar todos si no hay búsqueda
     }
   }
+
+  buscarProducto(name:any){
+    
+    this.productoservise.searchProduct(name.value).subscribe({
+      next: (data: any)=>{
+       
+        this.product= data.productos
+        
+      },
+      error: (error)=>{
+       
+        console.log(error);
+      }
+    })
+  }
+
+
 }

@@ -1,51 +1,25 @@
-<ion-header [translucent]="true" style="--background: #f9f9f9;">
-  <ion-toolbar style="--background: #f9f9f9;">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/inicio-tienda"></ion-back-button>
-    </ion-buttons>
-    <ion-title class="carrito">carrito</ion-title>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Carrito de Compras</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" style="--background: #f9f9f9;">
-
-  <!-- Encabezado del carrito -->
-  <div class="cart-header">
-    <ion-label>Total Productos: <span id="total-items">0</span></ion-label>
-    <ion-button color="danger" fill="outline">Vaciar Carrito</ion-button>
-  </div>
-
-  <!-- Lista de productos -->
-  <ion-list>
-    <ion-item class="product-item">
-      <ion-label>
-        <h2>Producto 1</h2>
-        <p>$20.00</p>
+<ion-content style="--background: #fff;">
+  <ion-list style="--background: #fff;">
+    <ion-item *ngFor="let item of cartItems" style="--background: #fff;">
+      <ion-thumbnail slot="start">
+        <img [src]="'http://127.0.0.1:3000/imagenes/productos/'+ item.product.imagen" alt="{{ item.product.name }}" />
+      </ion-thumbnail>
+      <ion-label style="--background: #fff;">
+        <p>{{ item.product.name }}</p>
+        <p>Precio: ${{ item.product.precio }}</p>
+        <p>Cantidad: {{ item.quantity }}</p>
       </ion-label>
-      <ion-button slot="end" color="primary" size="small" fill="outline">-</ion-button>
-      <ion-label slot="end">1</ion-label>
-      <ion-button slot="end" color="primary" size="small">+</ion-button>
-    </ion-item>
-
-    <ion-item class="product-item">
-      <ion-label>
-        <h2>Producto 2</h2>
-        <p>$15.00</p>
-      </ion-label>
-      <ion-button slot="end" color="primary" size="small" fill="outline">-</ion-button>
-      <ion-label slot="end">2</ion-label>
-      <ion-button slot="end" color="primary" size="small">+</ion-button>
+      <ion-button (click)="removeItem(item.id)" class="eliminar" style=" --background-color: red">Eliminar</ion-button>
     </ion-item>
   </ion-list>
 
-  <!-- Total -->
-  <div class="total">
-    Total: $50.00
-  </div>
-
-  <!-- Botón de Checkout -->
-  <ion-button expand="block" color="success">Finalizar Compra</ion-button>
-  
+  <ion-button expand="full" (click)="clearCart()">Vaciar Carrito</ion-button>
 </ion-content>
 
 

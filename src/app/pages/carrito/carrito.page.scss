@@ -97,36 +97,32 @@ ion-item{
       
 
 
-      .cart-header {
+      .cart-item {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        padding: 1rem;
-        background-color: #f9f9f9;
         border-bottom: 1px solid #ccc;
+        padding: 10px;
       }
-      
-      .product-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      
-      .product-item h2 {
-        margin: 0;
-        font-size: 1rem;
-      }
-      
-      .product-item p {
-        margin: 0;
-        color: #888;
-        font-size: 0.9rem;
-      }
-      
-      .total {
-        text-align: right;
-        padding: 1rem;
-        font-size: 1.2rem;
+      .product-name {
         font-weight: bold;
+        color: #333;
       }
-      
+      .product-price {
+        color: #007aff;
+        font-size: 14px;
+      }
+      .product-quantity {
+        font-size: 12px;
+        color: #666;
+      }
+      .custom-tab-bar {
+        background: #fff;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        z-index: 10;
+      }
+      .eliminar{
+        background-color: red;
+      }
